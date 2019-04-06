@@ -1,0 +1,19 @@
+{
+  "name": "Shop_advertisement_display",
+  "version": "1.0.0",
+  "description": "A web application for the webscript coursework",
+  "main": "server.js",
+  "scripts": {
+    "start": "node ./server/server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/GaryL98/ws_webapp.git"
+  },
+  "author": "Gary Leung",
+  "license": "ISC",
+  "homepage": "https://github.com/GaryL98/ws_webapp/blob/master/README.md",
+  "dependencies": {
+    "express": "^4.16.2"
+  }
+}
