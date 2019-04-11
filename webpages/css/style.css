@@ -1,0 +1,26 @@
+body {
+  background-image: url("background.jpg");
+}
+
+#title {
+  text-align: center;
+  color: white;
+  font-size: 50px;
+}
+
+#carouselHeader {
+  text-decoration: underline;
+  color: white;
+  font-size: 30px;
+  margin-left: 255px;
+}
+
+.carousel {
+  border-style: double;
+  margin-left: 100px;
+  max-width:980px;
+}
+
+.slides {
+  width: 100%
+}
