@@ -4,3 +4,19 @@
   <title>Shop advertisement configuration</title>
   <link rel="stylesheet" href="/css/style.css">
 </head>
+
+<body>
+  <a id="configureBtn" href="index.html">Click to go to display mode</a>
+  <h1 id="title">Configuration</h1>
+  <div id="blockCenter">
+    <p id="header">Enter shop name:</p>
+    <input type="text" id="newShopName" maxlength="32" placeholder="Example: London Camera Exchange" autofocus>
+    <p id="header">Enter caption:</p>
+    <input type="text" id="newCaption" maxlength="32" placeholder="Example: LIMITED TIME OFFER! Buy one get one free!" autofocus>
+    <p id="header">Upload photo:</p>
+
+    <a id="submit" onclick="submit()">Submit</a>
+  </div>
+</body>
+
+<script type="text/javascript" src="api.js"></script>

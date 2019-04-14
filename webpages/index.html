@@ -5,11 +5,12 @@
   <link rel="stylesheet" href="/css/style.css">
 </head>
 
-<body>
+<body onload="getData()">
   <p id="hint">Press "f" to toggle display mode</p>
-  <a id="configure" href="configure.html">Click to configure</a>
-  <h1 id="title">"Shop Name"</h1>
-  <h2 id="carouselHeader">"Caption"</h2>
+  <a id="configureBtn" href="configure.html">Click to configure</a>
+  <a id="clearBtn" href="index.html" onclick="clearData()">Click to clear data</a>
+  <h1 id="shopName"></h1>
+  <h2 id="caption"></h2>
   <div class="carousel" style="max-width:500px">
     <img class="slides" src="/images/1.jpg">
     <img class="slides" src="/images/2.jpg">

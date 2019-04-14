@@ -49,7 +49,16 @@ function toggleHint() {
 };
 
 function toggleConfigureBtn() {
-  var x = document.getElementById("configure");
+  var x = document.getElementById("configureBtn");
+  if (x.style.visibility === "hidden") {
+    x.style.visibility = "visible";
+  } else {
+    x.style.visibility = "hidden";
+  }
+};
+
+function toggleClearBtn() {
+  var x = document.getElementById("clearBtn");
   if (x.style.visibility === "hidden") {
     x.style.visibility = "visible";
   } else {
@@ -63,5 +72,36 @@ document.onkeydown = function(evt) {
     toggleFullscreen();
     toggleHint();
     toggleConfigureBtn();
+    toggleClearBtn();
   }
 };
+
+function submit() {
+  var shopName = document.getElementById("newShopName").value;
+  var caption = document.getElementById("newCaption").value;
+
+  if ((shopName.length !== 0) && (caption.length !== 0))  {
+    // Check browser support
+    if (typeof(Storage) !== "undefined") {
+      // Store
+      localStorage.setItem("Shop name", shopName);
+      localStorage.setItem("Caption", caption);
+      window.location.href = "index.html";
+    } else {
+      document.getElementById("shopName").innerHTML = "Sorry, your browser does not support web storage.";
+    }
+  } else {
+    alert("All input boxes must be filled.");
+  }
+};
+
+function getData() {
+  // Retrieve
+  document.getElementById("shopName").innerHTML = localStorage.getItem("Shop name");
+  document.getElementById("caption").innerHTML = localStorage.getItem("Caption");
+}
+
+function clearData() {
+  if(!confirm('Are you sure?'))e.preventDefault();
+  localStorage.clear();
+}
