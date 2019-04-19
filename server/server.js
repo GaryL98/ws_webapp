@@ -5,7 +5,6 @@ const express = require('express');
 const app = express();
 
 app.get('/save', (req, res) => {
-
   const shopName = (req.query.shopName);
   const caption = (req.query.caption);
 

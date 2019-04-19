@@ -7,6 +7,7 @@
 
 <body>
   <a id="configureBtn" href="index.html">Click to go to display mode</a>
+  <a id="clearBtn2" onclick="clearData()">Click to clear data</a>
   <h1 id="title">Configuration</h1>
   <div id="blockCenter">
     <p id="header">Enter shop name:</p>
@@ -15,8 +16,12 @@
     <input type="text" id="newCaption" maxlength="32" placeholder="Example: LIMITED TIME OFFER! Buy one get one free!" autofocus>
     <p id="header">Upload photo:</p>
 
+    <input type="file" name="myImage" accept="image/*" onchange="previewFile()"/>
+    <img src="" height="200" alt="Image preview...">
+
     <a id="submit" onclick="submit()">Submit</a>
   </div>
 </body>
 
 <script type="text/javascript" src="api.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>

@@ -1,16 +1,15 @@
 var index = 0;
-carousel();
 
-function carousel() {
+function getCarousel() {
   var i;
   var x = document.getElementsByClassName("slides");
   for (i = 0; i < x.length; i++) {
     x[i].style.display = "none";
-  }
+  };
   index++;
-  if (index > x.length) {index = 1}
+  if (index > x.length) {index = 1};
   x[index-1].style.display = "block";
-  setTimeout(carousel, 5000); // Change image every 5 seconds
+  setTimeout(getCarousel, 5000); // Change image every 5 seconds
 };
 
 function toggleFullscreen(elem) {
@@ -35,8 +34,8 @@ function toggleFullscreen(elem) {
       document.mozCancelFullScreen();
     } else if (document.webkitExitFullscreen) {
       document.webkitExitFullscreen();
-    }
-  }
+    };
+  };
 };
 
 function toggleHint() {
@@ -45,7 +44,7 @@ function toggleHint() {
     x.style.visibility = "visible";
   } else {
     x.style.visibility = "hidden";
-  }
+  };
 };
 
 function toggleConfigureBtn() {
@@ -54,41 +53,42 @@ function toggleConfigureBtn() {
     x.style.visibility = "visible";
   } else {
     x.style.visibility = "hidden";
-  }
+  };
 };
 
 function toggleClearBtn() {
-  var x = document.getElementById("clearBtn");
+  var x = document.getElementById("clearBtn1");
   if (x.style.visibility === "hidden") {
     x.style.visibility = "visible";
   } else {
     x.style.visibility = "hidden";
-  }
+  };
 };
 
 document.onkeydown = function(evt) {
   evt = evt || window.event;
-  if (evt.keyCode == 70) {
-    toggleFullscreen();
-    toggleHint();
-    toggleConfigureBtn();
-    toggleClearBtn();
-  }
+  if (window.location.pathname == '/index.html') {
+    if (evt.keyCode == 70) {
+      toggleFullscreen();
+      toggleHint();
+      toggleConfigureBtn();
+      toggleClearBtn();
+    };
+  };
 };
 
-function getData() {
-  // Retrieve
-  document.getElementById("shopName").innerHTML = localStorage.getItem("Shop name");
-  document.getElementById("caption").innerHTML = localStorage.getItem("Caption");
-};
-
-function clearData() {
+async function clearData() {
   if(!confirm('Are you sure?'))e.preventDefault();
-  localStorage.clear();
+
+  var shopName = "Please set shop details...";
+  var caption = "...on the configure page.";
+
+  const url = (`/save?shopName=${shopName}&caption=${caption}`);
+  window.location.href = "index.html";
+  const response = await fetch(url);
 };
 
 async function submit() {
-
     var shopName = document.getElementById("newShopName");
     var caption = document.getElementById("newCaption");
 
@@ -98,14 +98,28 @@ async function submit() {
       const response = await fetch(url);
     } else {
       alert("All input boxes must be filled.");
-    }
+    };
 };
 
-async function pageLoaded() {
+function getData() {
   $.getJSON("shopData.json", function(data) {
     document.getElementById("shopName").innerHTML = data.shopName;
     document.getElementById("caption").innerHTML = data.caption;
   });
 };
 
-window.addEventListener("load", pageLoaded);
+function previewFile(){
+  var preview = document.querySelector('img'); //selects the query named img
+  var file    = document.querySelector('input[type=file]').files[0]; //sames as here
+  var reader  = new FileReader();
+
+  reader.onloadend = function () {
+    preview.src = reader.result;
+  };
+
+  if (file) {
+    reader.readAsDataURL(file); //reads the data as a URL
+  } else {
+    preview.src = "";
+  }
+};
