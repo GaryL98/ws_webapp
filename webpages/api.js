@@ -76,32 +76,36 @@ document.onkeydown = function(evt) {
   }
 };
 
-function submit() {
-  var shopName = document.getElementById("newShopName").value;
-  var caption = document.getElementById("newCaption").value;
-
-  if ((shopName.length !== 0) && (caption.length !== 0))  {
-    // Check browser support
-    if (typeof(Storage) !== "undefined") {
-      // Store
-      localStorage.setItem("Shop name", shopName);
-      localStorage.setItem("Caption", caption);
-      window.location.href = "index.html";
-    } else {
-      document.getElementById("shopName").innerHTML = "Sorry, your browser does not support web storage.";
-    }
-  } else {
-    alert("All input boxes must be filled.");
-  }
-};
-
 function getData() {
   // Retrieve
   document.getElementById("shopName").innerHTML = localStorage.getItem("Shop name");
   document.getElementById("caption").innerHTML = localStorage.getItem("Caption");
-}
+};
 
 function clearData() {
   if(!confirm('Are you sure?'))e.preventDefault();
   localStorage.clear();
-}
+};
+
+async function submit() {
+
+    var shopName = document.getElementById("newShopName");
+    var caption = document.getElementById("newCaption");
+
+    if ((shopName.value.length !== 0) && (caption.value.length !== 0))  {
+      const url = (`/save?shopName=${shopName.value}&caption=${caption.value}`);
+      window.location.href = "index.html";
+      const response = await fetch(url);
+    } else {
+      alert("All input boxes must be filled.");
+    }
+};
+
+async function pageLoaded() {
+  $.getJSON("shopData.json", function(data) {
+    document.getElementById("shopName").innerHTML = data.shopName;
+    document.getElementById("caption").innerHTML = data.caption;
+  });
+};
+
+window.addEventListener("load", pageLoaded);
