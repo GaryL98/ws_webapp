@@ -97,7 +97,7 @@ async function submit() {
       window.location.href = "index.html";
       const response = await fetch(url);
     } else {
-      alert("All input boxes must be filled.");
+      window.location.href = "index.html";
     };
 };
 
@@ -106,20 +106,4 @@ function getData() {
     document.getElementById("shopName").innerHTML = data.shopName;
     document.getElementById("caption").innerHTML = data.caption;
   });
-};
-
-function previewFile(){
-  var preview = document.querySelector('img'); //selects the query named img
-  var file    = document.querySelector('input[type=file]').files[0]; //sames as here
-  var reader  = new FileReader();
-
-  reader.onloadend = function () {
-    preview.src = reader.result;
-  };
-
-  if (file) {
-    reader.readAsDataURL(file); //reads the data as a URL
-  } else {
-    preview.src = "";
-  }
 };
