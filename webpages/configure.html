@@ -16,6 +16,16 @@
     <input type="text" id="newCaption" maxlength="32" placeholder="Example: LIMITED TIME OFFER! Buy one get one free!" autofocus>
     <p id="header">Add photo to carosel:</p>
 
+    <form action="/upload" enctype="multipart/form-data" method="POST">
+      <div class="section">Note: Only image files are allowed.</div>
+      <div class="inner-wrap">
+        <label><input type="file" id="photo" name="photo" /></label>
+        <div class="button-section">
+          <input type="submit" name="Upload" value="Upload Photo"/>
+        </div>
+      </div>
+    </form>
+
     <a id="submit" onclick="submit()">Submit</a>
   </div>
 </body>
