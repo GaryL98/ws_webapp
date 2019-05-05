@@ -49,7 +49,7 @@ const multerConfig = {
 };
 
 app.post('/upload', multer(multerConfig).single('photo'),function(req, res){
-  res.send('Complete! Check out your public/photo-storage folder.  Please note that files not encoded with an image mimetype are rejected. <a href="configure.html">try again</a>');
+  res.send('Your file has been sent to the server. Please note that files not encoded with an image mimetype are rejected. <a href="configure.html">GO BACK/a>');
 });
 
 app.get('/save', (req, res) => {
