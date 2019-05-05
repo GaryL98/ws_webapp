@@ -10,40 +10,46 @@ const app = express();
 app.use(bodyParser.urlencoded({extended:false})); //handle body requests
 app.use(bodyParser.json()); // let's make JSON work too!
 
+//MULTER CONFIG: to get file photos to temp server storage
 const multerConfig = {
+  //specify diskStorage (another option is memory)
   storage: multer.diskStorage({
-    //Setup where the user's file will go
+    //specify destination
     destination: function(req, file, next){
       next(null, './webpages/images');
     },
 
-    //Then give the file a unique name
+    //specify the filename to be unique
     filename: function(req, file, next){
       console.log(file);
+      //get the file mimetype ie 'image/jpeg' split and prefer the second value ie'jpeg'
       const ext = file.mimetype.split('/')[1];
+      //set the file fieldname to a unique name containing the original name, current datetime and the extension.
       next(null, file.fieldname + '-' + Date.now() + '.'+ext);
     }
   }),
 
-  //A means of ensuring only images are uploaded.
+  // filter out and prevent non-image files.
   fileFilter: function(req, file, next){
     if(!file){
       next();
     }
+
+    // only permit image mimetypes
     const image = file.mimetype.startsWith('image/');
     if(image){
       console.log('photo uploaded');
       next(null, true);
     }else{
-      console.log("file not supported");
+      console.log("file not supported")
       //TODO:  A better message response to user on failure.
       return next();
     }
   }
 };
 
-app.post('/upload',multer(multerConfig).single('photo'),function(req,res){
-  res.send('Complete!');
+app.post('/upload', multer(multerConfig).single('photo'),function(req, res){
+  res.send('Complete! Check out your public/photo-storage folder.  Please note that files not encoded with an image mimetype are rejected. <a href="configure.html">try again</a>');
 });
 
 app.get('/save', (req, res) => {
