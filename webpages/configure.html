@@ -14,14 +14,21 @@
     <input type="text" id="newShopName" maxlength="32" placeholder="Example: London Camera Exchange" autofocus>
     <p id="header">Change caption:</p>
     <input type="text" id="newCaption" maxlength="32" placeholder="Example: LIMITED TIME OFFER! Buy one get one free!" autofocus>
+    <div id="blockCenter">
+      <a id="submit" onclick="submit()">Submit changes</a>
+    </div>
     <p id="header">Add photo to carosel:</p>
 
     <form action="/upload" enctype="multipart/form-data" method="POST">
-      <input type="file" name="photo" />
-      <input type="submit" value="Upload Photo"/>
+    <div class="section">Note: Only image files are allowed.</div>
+      <div class="inner-wrap">
+        <label><input type="file" id="photo" name="photo" /></label>
+        <div class="button-section">
+          <input type="submit" name="Upload" value="Upload Photo"/>
+        </div>
+      </div>
     </form>
 
-    <a id="submit" onclick="submit()">Submit</a>
   </div>
 </body>
 
