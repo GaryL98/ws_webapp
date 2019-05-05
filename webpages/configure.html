@@ -17,13 +17,8 @@
     <p id="header">Add photo to carosel:</p>
 
     <form action="/upload" enctype="multipart/form-data" method="POST">
-      <div class="section">Note: Only image files are allowed.</div>
-      <div class="inner-wrap">
-        <label><input type="file" id="photo" name="photo" /></label>
-        <div class="button-section">
-          <input type="submit" name="Upload" value="Upload Photo"/>
-        </div>
-      </div>
+      <input type="file" name="photo" />
+      <input type="submit" value="Upload Photo"/>
     </form>
 
     <a id="submit" onclick="submit()">Submit</a>
