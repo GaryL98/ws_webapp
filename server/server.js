@@ -6,6 +6,7 @@ const multer = require('multer'); // file storing middleware
 const bodyParser = require('body-parser'); //cleans our req.body
 
 const app = express();
+const dir = './webpages/images';
 
 app.use(bodyParser.urlencoded({extended:false})); //handle body requests
 app.use(bodyParser.json()); // let's make JSON work too!
@@ -24,8 +25,12 @@ const multerConfig = {
       console.log(file);
       //get the file mimetype ie 'image/jpeg' split and prefer the second value ie'jpeg'
       const ext = file.mimetype.split('/')[1];
-      //set the file fieldname to a unique name containing the original name, current datetime and the extension.
-      next(null, file.fieldname + '-' + Date.now() + '.'+ext);
+
+      fs.readdir(dir, (err, files) => {
+        var i = files.length;
+        //set the file fieldname to a unique name containing the original name, current datetime and the extension.
+        next(null, `${(i + 1) + '.' + ext}`);
+      });
     }
   }),
 
@@ -49,7 +54,7 @@ const multerConfig = {
 };
 
 app.post('/upload', multer(multerConfig).single('photo'),function(req, res){
-  res.send('Your file has been sent to the server. Please note that files not encoded with an image mimetype are rejected. <a href="configure.html">GO BACK/a>');
+  res.send('Your file has been sent to the server. Please note that files not encoded with an image mimetype are rejected. <a href="configure.html">GO BACK');
 });
 
 app.get('/save', (req, res) => {

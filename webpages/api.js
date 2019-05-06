@@ -97,7 +97,7 @@ async function submit() {
       window.location.href = "index.html";
       const response = await fetch(url);
     } else {
-      window.location.href = "index.html";
+      alert("All input boxes must be filled.");
     };
 };
 

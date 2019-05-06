@@ -7,7 +7,7 @@
 
 <body>
   <a id="configureBtn" href="index.html">Click to go to display mode</a>
-  <a id="clearBtn1" onclick="clearData()">Click to clear data</a>
+  <a id="clearBtn1" onclick="clearData()">Click to reset diplay panel</a>
   <h1 id="title">Configuration</h1>
   <div id="blockCenter">
     <p id="header">Change shop name:</p>
@@ -20,13 +20,8 @@
     <p id="header">Add photo to carosel:</p>
 
     <form action="/upload" enctype="multipart/form-data" method="POST">
-    <div class="section">Note: Only image files are allowed.</div>
-      <div class="inner-wrap">
-        <label><input type="file" id="photo" name="photo" /></label>
-        <div class="button-section">
-          <input type="submit" name="Upload" value="Upload Photo"/>
-        </div>
-      </div>
+      <input type="file" name="photo" accept="image/*"/>
+      <input type="submit" name="Upload" value="Upload photo"/>
     </form>
 
   </div>
