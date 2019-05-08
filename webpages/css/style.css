@@ -8,8 +8,12 @@ body {
   font-size: 70px;
 }
 
-#hint {
+#hint, #noImage {
   color: white;
+}
+
+#noImage {
+  text-align: center;
 }
 
 #configureBtn {
@@ -25,7 +29,7 @@ body {
   right:10px;
 }
 
-#clearBtn1 {
+#clearBtn {
   background-color: white;
   color: black;
   padding: 5px 10px;
@@ -80,5 +84,13 @@ body {
   padding: 5px 10px;
   text-align: center;
   text-decoration: none;
+  font-size: 15px;
+}
+
+.btn {
+  border: 2px solid gray;
+  background-color: white;
+  padding: 10px 10px;
+  border-radius: 10px;
   font-size: 15px;
 }

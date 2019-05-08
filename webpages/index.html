@@ -5,16 +5,12 @@
   <link rel="stylesheet" href="/css/style.css">
 </head>
 
-<body onload="getData(); getCarousel();">
+<body onload="getData();">
   <p id="hint">Press "f" to toggle display mode</p>
-  <a id="configureBtn" href="configure.html">Click to configure</a>
+  <a class="btn" id="configureBtn" href="configure.html">Click to configure</a>
   <h1 id="shopName"></h1>
   <h2 id="caption"></h2>
-  <div id="carousel" class="carousel" style="max-width:500px">
-    <img class="slides" src="/images/1.jpg">
-    <img class="slides" src="/images/2.jpg">
-    <img class="slides" src="/images/3.jpg">
-  </div>
+  <div id="carousel" class="carousel" style="max-width:500px"></div>
 </body>
 
 <script type="text/javascript" src="api.js"></script>

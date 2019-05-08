@@ -102,7 +102,6 @@ async function submit() {
 };
 
 async function getData() {
-  document.getElementById("carousel").innerHTML = '';
   $.getJSON("shopData.json", function(data) {
     document.getElementById("shopName").innerHTML = data.shopName;
     document.getElementById("caption").innerHTML = data.caption;
@@ -114,12 +113,13 @@ async function getData() {
   // extract result body
   var result = await response.json();
 
-  if (carousel == 0) {
-    document.getElementById("carousel").innerHTML = '<h1>Please upload photo ads on the configure page</h1>';
+  if (result == 0) {
+    document.getElementById("carousel").innerHTML = '<h1 id="noImage">Please upload photo ads on the configure page.</h1>';
   } else {
-    while (result != 0) {
-      console.log(result);
-      result--;
+    var i;
+    for (i = 1; i <= result; i++) {
+      $(".carousel").append(`<img class="slides" src="/images/${i}.jpeg">`);
     };
+    getCarousel();
   };
 };

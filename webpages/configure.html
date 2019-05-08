@@ -6,24 +6,24 @@
 </head>
 
 <body>
-  <a id="configureBtn" href="index.html">Click to go to display mode</a>
-  <a id="clearBtn1" onclick="clearData()">Click to reset diplay panel</a>
+  <a class="btn" id="configureBtn" href="index.html">Click to go to display mode</a>
+  <a class="btn" id="clearBtn" onclick="clearData()">Click to reset diplay panel</a>
   <h1 id="title">Configuration</h1>
   <div id="blockCenter">
     <p id="header">Change shop name:</p>
-    <input type="text" id="newShopName" maxlength="32" placeholder="Example: London Camera Exchange" autofocus>
+    <input type="text" id="newShopName" maxlength="64" placeholder="Example: London Camera Exchange" autofocus>
     <p id="header">Change caption:</p>
-    <input type="text" id="newCaption" maxlength="32" placeholder="Example: Buy one get one free!" autofocus>
+    <input type="text" id="newCaption" maxlength="64" placeholder="Example: LIMITED TIME OFFER! Buy one get one free!" autofocus>
     <div id="blockCenter">
-      <a id="submit" onclick="submit()">Submit changes</a>
+      <a class="btn" id="submit" onclick="submit()">Submit changes</a>
     </div>
-    <p id="header">Add photo to carosel (jpeg only):</p>
+    <p id="header">Add photo to carousel (Jpeg only):</p>
     <form action="/upload" enctype="multipart/form-data" method="POST">
-      <input type="file" name="photo" accept="image/jpeg"/>
-      <input type="submit" name="Upload" value="Upload photo"/>
+      <input class="btn" type="file" name="photo" accept="image/jpeg"/>
+      <input class="btn" type="submit" name="Upload" value="Upload photo"/>
     </form>
     <form action="/delete" enctype="multipart/form-data" method="POST">
-      <input type="submit" name="Delete" value="Delete all photos"/>
+      <input class="btn" type="submit" name="Delete" value="Delete all photos"/>
     </form>
   </div>
 </body>
