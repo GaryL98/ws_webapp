@@ -101,9 +101,25 @@ async function submit() {
     };
 };
 
-function getData() {
+async function getData() {
+  document.getElementById("carousel").innerHTML = '';
   $.getJSON("shopData.json", function(data) {
     document.getElementById("shopName").innerHTML = data.shopName;
     document.getElementById("caption").innerHTML = data.caption;
   });
+
+  const url = `/getNoOfImages`;
+  // request result from server
+  var response = await fetch(url);
+  // extract result body
+  var result = await response.json();
+
+  if (carousel == 0) {
+    document.getElementById("carousel").innerHTML = '<h1>Please upload photo ads on the configure page</h1>';
+  } else {
+    while (result != 0) {
+      console.log(result);
+      result--;
+    };
+  };
 };

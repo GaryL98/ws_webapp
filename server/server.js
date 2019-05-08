@@ -83,6 +83,13 @@ app.get('/save', (req, res) => {
   fs.writeFileSync('./webpages/shopData.json', data);
 });
 
+app.get('/getNoOfImages', (req, res) => {
+  fs.readdir(dir, (err, files) => {
+    var i = files.length;
+    res.json(i);
+  });
+});
+
 app.use(express.static('./webpages'));
 
 app.listen(process.env.PORT || 8080);
