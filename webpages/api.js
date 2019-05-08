@@ -1,5 +1,6 @@
 var index = 0;
 
+//display images one by one like a carousel
 function getCarousel() {
   var i;
   var x = document.getElementsByClassName("slides");
@@ -9,9 +10,10 @@ function getCarousel() {
   index++;
   if (index > x.length) {index = 1};
   x[index-1].style.display = "block";
-  setTimeout(getCarousel, 5000); // Change image every 5 seconds
+  setTimeout(getCarousel, 5000); //change image every 5 seconds
 };
 
+//toggles fullscreen
 function toggleFullscreen(elem) {
   elem = elem || document.documentElement;
   if (!document.fullscreenElement && !document.mozFullScreenElement &&
@@ -38,6 +40,7 @@ function toggleFullscreen(elem) {
   };
 };
 
+//toggles the 'hint' element
 function toggleHint() {
   var x = document.getElementById("hint");
   if (x.style.visibility === "hidden") {
@@ -47,6 +50,7 @@ function toggleHint() {
   };
 };
 
+//toggles the configure button
 function toggleConfigureBtn() {
   var x = document.getElementById("configureBtn");
   if (x.style.visibility === "hidden") {
@@ -56,6 +60,7 @@ function toggleConfigureBtn() {
   };
 };
 
+//toggles the clear button
 function toggleClearBtn() {
   var x = document.getElementById("clearBtn1");
   if (x.style.visibility === "hidden") {
@@ -65,6 +70,7 @@ function toggleClearBtn() {
   };
 };
 
+//toggles fullscreen/hint/configure button/clear button when the 'f' key is pressed
 document.onkeydown = function(evt) {
   evt = evt || window.event;
   if (window.location.pathname == '/index.html') {
@@ -77,9 +83,9 @@ document.onkeydown = function(evt) {
   };
 };
 
+//clears user data and resets the title/caption to default
 async function clearData() {
   if(!confirm('Are you sure?'))e.preventDefault();
-
   var shopName = "Please set shop details...";
   var caption = "...on the configure page.";
 
@@ -88,6 +94,7 @@ async function clearData() {
   const response = await fetch(url);
 };
 
+//sends user input to the server to be saved in the shopData.json file
 async function submit() {
     var shopName = document.getElementById("newShopName");
     var caption = document.getElementById("newCaption");
@@ -97,10 +104,14 @@ async function submit() {
       window.location.href = "index.html";
       const response = await fetch(url);
     } else {
+      //validation
       alert("All input boxes must be filled.");
     };
 };
 
+//gets shop name and caption from the shopData.json file
+//gets images from the images dir
+//calls carousel function
 async function getData() {
   $.getJSON("shopData.json", function(data) {
     document.getElementById("shopName").innerHTML = data.shopName;
@@ -108,9 +119,9 @@ async function getData() {
   });
 
   const url = `/getNoOfImages`;
-  // request result from server
+  //request result from server
   var response = await fetch(url);
-  // extract result body
+  //extract result body
   var result = await response.json();
 
   if (result == 0) {
