@@ -13,6 +13,7 @@ Deployment
 * 'npm install' to download libraries
 * 'npm start' to start the server
 * webpage can be accessed on the localhost at port 8080
+* test images are provided in the 'test_images' folder
 
 How to
 ==========
@@ -41,4 +42,4 @@ understand and had a very clear design. This was important because I wanted anyo
 use this web application with little to no training needed.
 
 The only modules I had used were express, fs, multer, body-parser and path. No other
-external libraries were used. 
+external libraries were used.
