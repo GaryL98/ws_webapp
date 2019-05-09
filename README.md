@@ -31,3 +31,14 @@ How to delete all images from the carousel:
 
 How to enter display mode:
 * go to the homepage and press the 'f' key to go in/out of display mode
+
+Design
+==========
+
+I wanted this web application to be easy and simple to use for the user.
+The display board and configure page were designed so it was user friendly, simple to
+understand and had a very clear design. This was important because I wanted anyone to
+use this web application with little to no training needed.
+
+The only modules I had used were express, fs, multer, body-parser and path. No other
+external libraries were used. 
